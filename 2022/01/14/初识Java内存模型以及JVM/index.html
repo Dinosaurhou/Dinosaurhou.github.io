@@ -5,8 +5,8 @@
   <meta charset="utf-8">
   <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
   <!-- SEO相关 -->
-  <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="http://example.com/archives/"/>
+  
+  <link rel="canonical" href="http://example.com/2022/01/14/初识java内存模型以及jvm/"/>
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
   <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
@@ -21,20 +21,25 @@
   <meta content="会飞的小恐龙" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1642516398327" as="style">
+  <link rel="preload" href="/css/style.css?time=1642516398317" as="style">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/VarelaRound/VarelaRound-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/UbuntuMono/UbuntuMono-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
   <!-- 页面元数据 -->
-  <title>归档 - 会飞的小恐龙</title>
-  <meta name="keywords" content="null">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="会飞的小恐龙">
-<meta property="og:url" content="http://example.com/archives/index.html">
+  <title>初识Java内存模型以及JVM - 会飞的小恐龙</title>
+  <meta name="keywords" content="Java,null">
+  <meta name="description" content="初识Java内存模型；简单了解JVM （仅供个人使用）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初识Java内存模型以及JVM">
+<meta property="og:url" content="http://example.com/2022/01/14/%E5%88%9D%E8%AF%86Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8AJVM/index.html">
 <meta property="og:site_name" content="会飞的小恐龙">
+<meta property="og:description" content="初识Java内存模型；简单了解JVM （仅供个人使用）">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
+<meta property="article:published_time" content="2022-01-14T02:39:27.000Z">
+<meta property="article:modified_time" content="2022-01-14T10:08:56.907Z">
 <meta property="article:author" content="dinosaur">
+<meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
   <!-- feed -->
@@ -1762,8 +1767,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1642516398327" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1642516398327"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1642516398317" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1642516398317"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -2190,7 +2195,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <!-- Custom Files head end-->
 <!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/hexo-electric-clock@1.0.6/clock.css"><!-- hexo injector head_end end --></head>
   <body itemscope itemtype="http://schema.org/WebPage">
-    <header itemscope itemtype="http://schema.org/WPHeader" id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
+    <header itemscope itemtype="http://schema.org/WPHeader" id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -2511,115 +2516,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="l_cover">
   
       
-        
-          <div class="cover-wrapper  search" id='half'>
-            
-  <div id="parallax-window"></div>
-
-<div class='cover-body'>
-  <div class='top'>
-    
-    
-      <p class="title">会飞的小恐龙</p>
-    
-    
-<!--这是滚动的小字start-->
-<!-- 封面滚动字体 -->
-<div id="binft"></div> 
-<script>
-    var binft = function (r) {
-      function t() {
-        return b[Math.floor(Math.random() * b.length)]
-      }  
-      function e() {
-        return String.fromCharCode(94 * Math.random() + 33)
-      }
-      function n(r) {
-        for (var n = document.createDocumentFragment(), i = 0; r > i; i++) {
-          var l = document.createElement("span");
-          l.textContent = e(), l.style.color = t(), n.appendChild(l)
-        }
-        return n
-      }
-      function i() {
-        var t = o[c.skillI];
-        c.step ? c.step-- : (c.step = g, c.prefixP < l.length ? (c.prefixP >= 0 && (c.text += l[c.prefixP]), c.prefixP++) : "forward" === c.direction ? c.skillP < t.length ? (c.text += t[c.skillP], c.skillP++) : c.delay ? c.delay-- : (c.direction = "backward", c.delay = a) : c.skillP > 0 ? (c.text = c.text.slice(0, -1), c.skillP--) : (c.skillI = (c.skillI + 1) % o.length, c.direction = "forward")), r.textContent = c.text, r.appendChild(n(c.prefixP < l.length ? Math.min(s, s + c.prefixP) : Math.min(s, t.length - c.skillP))), setTimeout(i, d)
-      }
-      var l = "",
-      o = ["你在南方的艳阳里大雪纷飞 我在北方的寒夜里四季如春。", "几人份的畅谈 道三两句晚安 惹多情的遐想 却轻易地走散。","乔木落叶 告诉我时间变迁 你仍旧倚靠石头看岁岁年年。", "等到看你银色满际 等到分不清季节更替 才敢说沉溺","我爱你有种左灯右行的冲突 疯狂却怕没有退路","我没有那么想你 那只是偶尔醉意会催人提起","晚星就像你的眼睛杀人又放火 你什么都没有说 野风惊扰我。","我在人间彷徨 寻不到你的天堂 东瓶西镜放 恨不能遗忘"].map(function (r) {
-      return r + ""
-      }),
-      a = 2,
-      g = 1,
-      s = 5,
-      d = 75,
-      b = ["rgb(110,64,170)", "rgb(150,61,179)", "rgb(191,60,175)", "rgb(228,65,157)", "rgb(254,75,131)", "rgb(255,94,99)", "rgb(255,120,71)", "rgb(251,150,51)", "rgb(226,183,47)", "rgb(198,214,60)", "rgb(175,240,91)", "rgb(127,246,88)", "rgb(82,246,103)", "rgb(48,239,130)", "rgb(29,223,163)", "rgb(26,199,194)", "rgb(35,171,216)", "rgb(54,140,225)", "rgb(76,110,219)", "rgb(96,84,200)"],
-      c = {
-        text: "",
-        prefixP: -s,
-        skillI: 0,
-        skillP: 0,
-        direction: "forward",
-        delay: a,
-        step: g
-      };
-      i()
-      };
-      binft(document.getElementById('binft'));
-  </script>
-<!--这是滚动的小字end-->
-  </div>
-  <div class='bottom'>
-    
-      <div class="m_search">
-        <form name="searchform" class="form u-search-form">
-          <input type="text" class="input u-search-input" placeholder="我以为我会疼痛的 后来都融化了" />
-          <i class="icon fas fa-search fa-fw"></i>
-        </form>
-      </div>
-    
-    <div class='menu navigation'>
-      <div class='list-h'>
-        
-          
-            <a href="/"
-              
-              
-              active-action="action-home">
-              <p>主页</p>
-            </a>
-          
-            <a href="/categories/"
-              
-              
-              active-action="action-categories">
-              <p>分类</p>
-            </a>
-          
-            <a href="/tags/"
-              
-              
-              active-action="action-tags">
-              <p>标签</p>
-            </a>
-          
-            <a href="/archives/"
-              
-              
-              active-action="action-archives">
-              <p>归档</p>
-            </a>
-          
-        
-      </div>
-    </div>
-  </div>
-</div>
-<canvas id="header_canvas"style="position:absolute;bottom:0;z-index: 0;width:1366;height:610"></canvas>
-
-          </div>
-        
-      
   
 </div>
 
@@ -2627,88 +2523,394 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         <div class="body-wrapper">
           
 <div id="l_main" class=''>
-	
-	  <article id="arc" class="post article white-box reveal shadow">
-			
-			
-				
-				
-					
-						
-						<h2><i class="fas fa-calendar-alt"></i>&nbsp;2022</h2>
-					
-						<div class='timenode'>
-								<a class="meta" href="/2022/01/14/CSS%E5%9F%BA%E6%9C%AC%E5%86%85%E5%AE%B9/">
-									<time>01-14</time>
-									
-										CSS基本内容
-									
-									
-										&nbsp;<i class="fas fa-headphones-alt music" aria-hidden="true"></i>
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2022/01/14/%E5%88%9D%E8%AF%86Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8AJVM/">
-									<time>01-14</time>
-									
-										初识Java内存模型以及JVM
-									
-									
-										&nbsp;<i class="fas fa-headphones-alt music" aria-hidden="true"></i>
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2022/01/13/Java/">
-									<time>01-13</time>
-									
-										Java
-									
-									
-										&nbsp;<i class="fas fa-headphones-alt music" aria-hidden="true"></i>
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2022/01/05/hello-world/">
-									<time>01-05</time>
-									
-										Hello World
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-	  </article>
-	
+  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/14/%E5%88%9D%E8%AF%86Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8AJVM/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="会飞的小恐龙">
+  </span>
+  
+
+
+  
+    <span hidden>
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  <div class="article-meta" id="top">
+    
+      
+
+  
+    <meting-js
+      mini='true'
+      volume='0.7'
+      loop='all'
+      order='random'
+      server='netease'
+      type='song'
+      id='512376195'>
+    </meting-js>
+  
+
+
+    
+    
+    
+      <h1 class="title" itemprop="name headline">
+        初识Java内存模型以及JVM
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a itemprop="url" class='author' target="_blank" href="https://github.com/Dinosaurhou" rel="nofollow noopener">
+    <img itemprop="image" src="https://gitee.com/zhang-yuzhuo/blogimg/raw/master/myblog/%E5%A4%B4%E5%83%8F.jpg" class="lazyload" data-srcset="https://gitee.com/zhang-yuzhuo/blogimg/raw/master/myblog/%E5%A4%B4%E5%83%8F.jpg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="This is a picture without description" >
+    <p itemprop="name">Dinosaurhou</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+    <a class="category-link" href="/categories/Java/">Java</a>
+    
+      <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="/categories/Java/" itemprop="url"><span itemprop="name">Java</span></a>
+      </span>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2022-01-14T10:39:27+08:00">
+  <a class='notlink' href="/" onclick="return false;" title="Click me!" >
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2022年1月14日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink' href="/" onclick="return false;" title="Click me!" >
+      
+      <div id="lc-pv" data-title="初识Java内存模型以及JVM" data-path="/2022/01/14/%E5%88%9D%E8%AF%86Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8AJVM/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
+      </div>
+    
+  </div>
+
+
+  <div id="layoutHelper-page-plugins"></div>
+  <div id="post-body" itemprop="articleBody">
+    <p>初识Java内存模型；简单了解JVM</p>
+<p>（仅供个人使用）</p>
+<span id="more"></span>
+<p><strong>参考博文如下：</strong></p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://hollis.blog.csdn.net/article/details/80880118">再有人问你Java内存模型是什么，就把这篇文章发给他。_HollisChuang’s Blog-CSDN博客_再有人问你java内存模型</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/javazejian/article/details/72772461">全面理解Java内存模型(JMM)及volatile关键字_zejian的博客-CSDN博客_jmm内存模型</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/suifeng3051/article/details/52611233?ops_request_misc=%7B%22request%5Fid%22%3A%22162657236716780262590828%22%2C%22scm%22%3A%2220140713.130102334.pc%5Fall.%22%7D&amp;request_id=162657236716780262590828&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_v2~rank_v29-1-52611233.pc_search_result_cache&amp;utm_term=synchronized%E5%92%8Cvolatile&amp;spm=1018.2226.3001.4187">volatile和synchronized的区别_Heaven Wang 的专栏-CSDN博客_synchronized和volatile区别</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/csdnliuxin123524/article/details/81303711?ops_request_misc=%7B%22request%5Fid%22%3A%22162657884116780366531586%22%2C%22scm%22%3A%2220140713.130102334..%22%7D&amp;request_id=162657884116780366531586&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-81303711.pc_search_result_cache&amp;utm_term=JVM&amp;spm=1018.2226.3001.4187">JVM原理最全、清晰、通俗讲解，五天40小时吐血整理_小爷欣欣-CSDN博客_jvm原理</a></li>
+</ol>
+<h1>Java内存模型</h1>
+<p><strong>JMM</strong>，即Java内存模型（Java Memory Model的缩写）。Java内存模型是在硬件内存模型上的更高层的抽象，它屏蔽了各种硬件和操作系统访问的差异性，保证了Java程序在各种平台下对内存的访问都能达到一致的效果。它描述的是一种规则或者是规范。</p>
+<p>**JMM规定：**所有的变量都存储在主内存中，每条线程还有自己的工作内存，线程的工作内存中保存了该线程中是用到的变量的主内存副本拷贝，线程对变量的所有操作都必须在工作内存中进行，而不能直接读写主内存。不同的线程之间也无法直接访问对方工作内存中的变量，线程间变量的传递均需要自己的工作内存和主存之间进行数据同步进行。</p>
+<h2 id="JMM的三个特性（简单理解）">JMM的三个特性（简单理解）</h2><div class="story post-story">
+<ul>
+<li>原子性</li>
+</ul>
+<p>CPU不能中途暂停一个操作然后再调度，不能中断，即使是在多线程环境下，一个操作一旦开始就不会被其他线程影响。要么不执行，要么开始不停止。</p>
+<p>Java为保证原子性，Java中可以使用<code>synchronized</code>来保证方法和代码块内的操作为原子性。</p>
+<ul>
+<li>可见性</li>
+</ul>
+<p>多线程访问同一个变量时，一个线程修改了这个变量的值，其他线程也能看的见。</p>
+<p>Java中的<code>volatile</code>关键字提供了一个功能，那就是被其修饰的变量在被修改后可以立即同步到主内存，被其修饰的变量在每次是用之前都从主内存刷新。当然<code>synchronized</code>也可以保证可见性。</p>
+<ul>
+<li>有序性</li>
+</ul>
+<p>在单线程中，代码就是按照顺序执行的。但是再多线程中，程序在编译成机器语言之后会出现指令重排现象，重排后的指令与原指令的顺序未必一致。</p>
+<p>在Java中，可以使用<code>synchronized</code>和<code>volatile</code>来保证多线程之间操作的有序性。其中，<code>volatile</code>关键字会禁止指令重排。<code>synchronized</code>关键字保证同一时刻只允许一条线程操作。</p>
+</div><h2 id="volatile和synchronized">volatile和synchronized</h2><div class="story post-story">
+<ul>
+<li>
+<p><strong>volatile</strong></p>
+<ul>
+<li>被<code>volatile</code>修饰的变量对所有线程都是可见的，即如果一个线程改变了被<code>volatile</code>修饰的变量的值，那么所有线程都是知道的</li>
+<li>禁止指令重排
+<ol>
+<li>当程序执行到·volatile·变量的读操作或者写操作时，在其前面的操作的更改肯定全部已经进行，且结果已经对后面的操作可见；在其后面的操作肯定还没有进行</li>
+<li>在进行指令优化时，不能将在对<code>volatile</code>变量访问的语句放在其后面执行，也不能把<code>volatile</code>变量后面的语句放到其前面执行</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>synchronized</strong></p>
+<ul>
+<li>阻止其它线程获取当前对象的监控锁，这样就使得当前对象中被<code>synchronized</code>关键字保护的代码块无法被其它线程访问，也就无法并发执行。因为这样所以<code>synchronized</code>会影响性能和效率</li>
+</ul>
+</li>
+</ul>
+<p><strong>volatile和synchronized的一个例子：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">volatile</span> <span class="keyword">int</span> inc = <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">increase</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        inc++;</span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> Test test = <span class="keyword">new</span> Test();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</span><br><span class="line">            <span class="keyword">new</span> Thread()&#123;</span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="number">1000</span>;j++)</span><br><span class="line">                        test.increase();</span><br><span class="line">                &#125;;</span><br><span class="line">            &#125;.start();</span><br><span class="line">        &#125;</span><br><span class="line">         </span><br><span class="line">        <span class="keyword">while</span>(Thread.activeCount()&gt;<span class="number">1</span>)  <span class="comment">//保证前面的线程都执行完</span></span><br><span class="line">            Thread.yield();</span><br><span class="line">        System.out.println(test.inc);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>例子中用new了10个线程，分别去调用1000次<code>increase()</code>方法，每次运行结果都不一致，都是一个小于10000的数字。自增操作不是原子操作，volatile 是不能保证原子性的。回到文章一开始的例子，使用<code>volatile</code>修饰int型变量i，多个线程同时进行i++操作。比如有两个线程A和B对volatile修饰的i进行i++操作，i的初始值是0，A线程执行i++时刚读取了i的值0，就切换到B线程了，B线程（从内存中）读取i的值也为0，然后就切换到A线程继续执行i++操作，完成后i就为1了，接着切换到B线程，因为之前已经读取过了，所以继续执行i++操作，最后的结果i就为1了。同理可以解释为什么每次运行结果都是小于10000的数字。</p>
+<p><strong>用<code>synchronized</code>修改</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span>  <span class="keyword">int</span> inc = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">increase</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        inc++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1>JVM</h1>
+</div><h2 id="JVM的概述">JVM的概述</h2><div class="story post-story">
+<p><strong>JVM</strong>是Java Virtual Machine（Java虚拟机）的缩写，JVM是一种用于计算设备的规范，它是一个虚构出来的计算机，是通过在实际的计算机上仿真模拟各种计算机功能来实现的。</p>
+<p>Java虚拟机有自己完善的硬件架构，如处理器、堆栈等，还具有相应的指令系统。Java虚拟机本质上就是一个程序，当它在命令行上启动的时候，就开始执行保存在某字节码文件中的指令。</p>
+<p>Java语言的可移植性正是建立在Java虚拟机的基础上。任何平台只要装有针对于该平台的Java虚拟机，字节码文件（.class）就可以在该平台上运行。这就是“一次编译，多次运行”。</p>
+<h3 id="1-程序计数器">1.程序计数器</h3>
+<p>PC寄存器，是一块较小的内存空间，它可以看做是当前线程所执行的字节码的行号指示器。</p>
+<ul>
+<li>
+<p>当虚拟机正在执行的方法是一个本地（native）方法的时候，JVM的pc寄存器存储的值是undefined。</p>
+</li>
+<li>
+<p>程序计数器是线程私有的，它的生命周期与线程相同，每个线程都有一个。</p>
+</li>
+<li>
+<p>此内存区域是唯一一个在Java虚拟机规范中没有规定任何OutOfMemoryError情况的区域。</p>
+</li>
+</ul>
+<h3 id="2-Java虚拟机栈">2.Java虚拟机栈</h3>
+<ul>
+<li>线程私有的，生命周期与线程相同</li>
+<li>每个线程创建的时候会创建一个JVM栈，JVM栈中每个栈帧存放的为当前线程中局部基本类型的变量</li>
+<li>每一个方法从被调用直至执行完成的过程就对应着一个栈帧在虚拟机栈中从入栈到出栈的过程。</li>
+</ul>
+<h3 id="3-本地方法栈">3.本地方法栈</h3>
+<p>本地方法指得是方法的修饰符是带有Native的，但是方法体不是用java代码写的类方法。</p>
+<h3 id="4-Java堆">4.Java堆</h3>
+<ul>
+<li>在虚拟机启动的时候创建</li>
+<li>唯一目的就是存放对象实例，几乎所有的对象实例以及数组都要在这里分配内存</li>
+<li>Java堆是垃圾收集器管理的主要区域</li>
+<li>因此很多时候java堆也被称为“GC堆”（Garbage Collected Heap）</li>
+<li>java堆是计算机物理存储上不连续的、逻辑上是连续的，也是大小可调节的</li>
+</ul>
+<h3 id="5-方法区">5.方法区</h3>
+<ul>
+<li>用于存放已被虚拟机加载的类信息、常量、静态变量、以及编译后的方法实现的二进制形式的机器指令集等数据。</li>
+<li>运行时常量池（Runtime Constant Pool）是方法区的一部分。</li>
+</ul>
+<p><img src="https://gitee.com/zhang-yuzhuo/blogimg/raw/master/img/20210718150819%E6%A0%88%E5%A0%86%E6%96%B9%E6%B3%95%E5%8C%BA.png" class="lazyload" data-srcset="https://gitee.com/zhang-yuzhuo/blogimg/raw/master/img/20210718150819%E6%A0%88%E5%A0%86%E6%96%B9%E6%B3%95%E5%8C%BA.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="栈堆方法区"></p>
+
+</div>
+  </div>
+  
+  
+    
+    <div class='footer'>
+      
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=http://example.com/2022/01/14/%E5%88%9D%E8%AF%86Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8AJVM/>http://example.com/2022/01/14/%E5%88%9D%E8%AF%86Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8AJVM/</a></p>
+              
+            
+          </blockquote>
+        </div>
+      
+      
+    </div>
+  
+  
+    
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2022-01-14T18:08:56+08:00">
+  <a class='notlink' href="/" onclick="return false;" title="Click me!" >
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2022年1月14日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Java/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Java</p></a></div>
+  <span hidden itemprop="keywords">Java</span>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2022/01/14/%E5%88%9D%E8%AF%86Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8AJVM/&title=初识Java内存模型以及JVM - 会飞的小恐龙&summary=初识Java内存模型；简单了解JVM
+（仅供个人使用）"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="This is a picture without description" >
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2022/01/14/%E5%88%9D%E8%AF%86Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8AJVM/&title=初识Java内存模型以及JVM - 会飞的小恐龙&summary=初识Java内存模型；简单了解JVM
+（仅供个人使用）"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="This is a picture without description" >
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2022/01/14/%E5%88%9D%E8%AF%86Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8AJVM/&title=初识Java内存模型以及JVM - 会飞的小恐龙&summary=初识Java内存模型；简单了解JVM
+（仅供个人使用）"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="This is a picture without description" >
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+    <!-- Custom Files bottomMeta begin -->
+    
+    <!-- Custom Files bottomMeta end -->
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/2022/01/14/CSS%E5%9F%BA%E6%9C%AC%E5%86%85%E5%AE%B9/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>CSS基本内容</p>
+          <p class='content'>CSS基本内容简要
+
+项目最最基本结构
+
+123456789101112131415 &lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&...</p>
+        </a>
+      
+      
+        <a class='next' href='/2022/01/13/Java/'>
+          <p class='title'>Java<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>一、初识Java
+1.Java的简介
+Java是一门面向对象编程语言，不仅吸收了C++语言的各种优点，还摒弃了C++里难以理解的多继承、指针等概念，因此Java语言具有功能强大和简单易用两个特征...</p>
+        </a>
+      
+    </div>
+  
+  <!-- Custom Files postEnd begin-->
+  
+  <!-- Custom Files postEnd end-->
+</article>
+
+
+  
+
+  
+  <article class="post white-box reveal shadow" id="comments">
+    <span hidden>
+      <meta itemprop="discussionUrl" content="/2022/01/14/%E5%88%9D%E8%AF%86Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8AJVM/index.html#comments">
+    </span>
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    
+    <div id="layoutHelper-comments"></div>
+
+  </article>
+  
+
+
+
+
+
 </div>
 <aside id='l_side' itemscope itemtype="http://schema.org/WPSideBar">
   
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile pjax" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JMM%E7%9A%84%E4%B8%89%E4%B8%AA%E7%89%B9%E6%80%A7%EF%BC%88%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3%EF%BC%89"><span class="toc-text">JMM的三个特性（简单理解）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#volatile%E5%92%8Csynchronized"><span class="toc-text">volatile和synchronized</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JVM%E7%9A%84%E6%A6%82%E8%BF%B0"><span class="toc-text">JVM的概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%A8%8B%E5%BA%8F%E8%AE%A1%E6%95%B0%E5%99%A8"><span class="toc-text">1.程序计数器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%A0%88"><span class="toc-text">2.Java虚拟机栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%9C%AC%E5%9C%B0%E6%96%B9%E6%B3%95%E6%A0%88"><span class="toc-text">3.本地方法栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Java%E5%A0%86"><span class="toc-text">4.Java堆</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%96%B9%E6%B3%95%E5%8C%BA"><span class="toc-text">5.方法区</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+  
+
+  
+
   
     
     
@@ -2780,300 +2982,24 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   
 
-  
-    
-    
-
-<section class="widget text shadow desktop pjax">
-  
-  <header>
-    
-      <a href='/'><i class=" fa-fw" aria-hidden="true"></i><span class='name'>🚀注意</span></a>
-    
-  </header>
-
-
-  <div class='content'>
-    <div id="clock"></div>
-    
-      <p>本站默认替换了右键菜单，可使用「Ctrl + 右键」唤醒原菜单</p>
-
-    
-  </div>
-</section>
-
-  
-
-  
-    
-    
-
-<section class="widget grid shadow desktop mobile pjax">
-  
-  <header>
-    
-      <a target="_blank" rel="noopener" href='https://www.baidu.com/'><i class=" fa-fw" aria-hidden="true"></i><span class='name'>🚌小站外</span></a>
-    
-  </header>
-
-
-  <div class='content'>
-    <div class="grid navigation fixed">
-      
-        <a class="flat-box" target="_blank" rel="noopener" href="https://www.bilibili.com/"
-          
-          
-          active-action="action-https:wwwbilibilicom">
-          
-            <i class="fas fa-tv fa-fw fa-fw" aria-hidden="true"></i>
-          
-          Bilibili
-        </a>
-      
-        <a class="flat-box" target="_blank" rel="noopener" href="https://www.csdn.net/"
-          
-          
-          active-action="action-https:wwwcsdnnet">
-          
-            <i class="fas fa-question-circle fa-fw" aria-hidden="true"></i>
-          
-          CSDN
-        </a>
-      
-        <a class="flat-box" target="_blank" rel="noopener" href="https://gitee.com/"
-          
-          
-          active-action="action-https:giteecom">
-          
-            <i class="fab fa-github fa-fw" aria-hidden="true"></i>
-          
-          Git
-        </a>
-      
-        <a class="flat-box" target="_blank" rel="noopener" href="https://www.aliyun.com/"
-          
-          
-          active-action="action-https:wwwaliyuncom">
-          
-            <i class="fas fa-expand fa-fw fa-fw" aria-hidden="true"></i>
-          
-          阿里云
-        </a>
-      
-        <a class="flat-box" target="_blank" rel="noopener" href="https://cloud.tencent.com/"
-          
-          
-          active-action="action-https:cloudtencentcom">
-          
-            <i class="fab fa-skyatlas fa-fw fa-fw" aria-hidden="true"></i>
-          
-          腾讯云
-        </a>
-      
-        <a class="flat-box" target="_blank" rel="noopener" href="https://baidu.com/"
-          
-          
-          active-action="action-https:baiducom">
-          
-            <i class="fas fa-search fa-fw fa-fw" aria-hidden="true"></i>
-          
-          百度搜索
-        </a>
-      
-    </div>
-  </div>
-</section>
-
-  
-
-  
-    
-    
-
-<section class="widget shadow desktop pjax">
-  
-  <header>
-    
-      <i class=" fa-fw" aria-hidden="true"></i><span class='name'>ℹ️站点信息</span>
-    
-  </header>
-
-
-  <div class='content'>
-    <div class="webinfo">
-      
-        <div class="webinfo-item">
-          <div>文章数目：</div>
-          <div>4 篇</div>
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>已运行时间：</div>
-          <div id="webinfo-runtime-count" publish_date="03/24/2020 21:34:09"></div>
-        </div>
-        <script>
-          var BirthDay = new Date(new Date('2022/01/10'));
-          var today = new Date();
-          var timeold = (today.getTime() - BirthDay.getTime());
-          var daysold = Math.floor(timeold / (24 * 60 * 60 * 1000));
-          document.getElementById('webinfo-runtime-count').innerHTML = daysold + ' 天';
-        </script>
-      
-
-
-      
-        <div class="webinfo-item">
-          <div>本站总字数：</div>
-          <div>7.1k 字</div>
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>本站访客数：</div>
-          
-          <div><span id="lc-uv"><span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span></span> 人</div>
-          
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>本站总访问量：</div>
-          
-          <div><span id="lc-sv"><span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span></span> 次</div>
-          
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>最后活动时间：</div>
-          
-            <div id="last-update" style="display: none;">Tue Jan 18 2022 22:33:18 GMT+0800 (中国标准时间)</div>
-            <div id="last-update-show">2022-01-18 日</div>
-          
-        </div>
-        
-        <script>
-          function timeago(dateTimeStamp) {
-              var minute = 1000 * 60; //把分，时，天，周，半个月，一个月用毫秒表示
-              var hour = minute * 60;
-              var day = hour * 24;
-              var week = day * 7;
-              var month = day * 30;
-              var now = new Date().getTime(); //获取当前时间毫秒
-              var diffValue = now - dateTimeStamp; //时间差
-              if (diffValue < 0) {
-                  return;
-              }
-              var minC = diffValue / minute; //计算时间差的分，时，天，周，月
-              var hourC = diffValue / hour;
-              var dayC = diffValue / day;
-              var weekC = diffValue / week;
-              var monthC = diffValue / month;
-              if (monthC >= 1 && monthC <= 3) {
-                  result = " " + parseInt(monthC) + " 月前"
-              } else if (weekC >= 1 && weekC <= 3) {
-                  result = " " + parseInt(weekC) + " 周前"
-              } else if (dayC >= 1 && dayC <= 6) {
-                  result = " " + parseInt(dayC) + " 天前"
-              } else if (hourC >= 1 && hourC <= 23) {
-                  result = " " + parseInt(hourC) + " 小时前"
-              } else if (minC >= 1 && minC <= 59) {
-                  result = " " + parseInt(minC) + " 分钟前"
-              } else if (diffValue >= 0 && diffValue <= minute) {
-                  result = "刚刚"
-              } else {
-                  var datetime = new Date();
-                  datetime.setTime(dateTimeStamp);
-                  var Nyear = datetime.getFullYear();
-                  var Nmonth = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 1;
-                  var Ndate = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
-                  var Nhour = datetime.getHours() < 10 ? "0" + datetime.getHours() : datetime.getHours();
-                  var Nminute = datetime.getMinutes() < 10 ? "0" + datetime.getMinutes() : datetime.getMinutes();
-                  var Nsecond = datetime.getSeconds() < 10 ? "0" + datetime.getSeconds() : datetime.getSeconds();
-                  result = Nyear + "-" + Nmonth + "-" + Ndate
-              }
-              return result;
-          }
-          var lastUpDate = document.getElementById('last-update').innerHTML;
-          try {
-            document.getElementById('last-update-show').innerHTML = timeago(new Date(lastUpDate));
-          } catch (error) {
-            document.getElementById('last-update-show').innerHTML = '2022-01-18 日';
-          }
-        </script>
-        
-      
-    </div>
-  </div>
-</section>
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget category shadow desktop pjax">
-    
-  <header>
-    
-      <a href='/categories/'><i class=" fa-fw" aria-hidden="true"></i><span class='name'>📂文章分类</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/Java/" href="/categories/Java/"
-            active-action="action-categoriesJava"
-            ><div class='name'>Java</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E5%89%8D%E7%AB%AF/" href="/categories/%E5%89%8D%E7%AB%AF/"
-            active-action="action-categoriesE5898DE7ABAF"
-            ><div class='name'>前端</div><div class='badge'>(1)</div></a></li>
-        
-      </ul>
-    </div>
-  </section>
-
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow desktop mobile pjax">
-    
-  <header>
-    
-      <a href='/tags/'><i class=" fa-fw" aria-hidden="true"></i><span class='name'>🏷️热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/CSS/" style="font-size: 14px; color: #999">CSS</a> <a href="/tags/Java/" style="font-size: 24px; color: #555">Java</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14px; color: #999">前端</a> <a href="/tags/%E7%BD%91%E9%A1%B5/" style="font-size: 14px; color: #999">网页</a>
-    </div>
-  </section>
-
-
-  
-
-  
-
 
 <!-- 没有 pjax 占位会报错 万恶的 pjax -->
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
 
   <div class="pjax">
     <!-- pjax占位 -->
@@ -3098,14 +3024,15 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </aside>
 
 
+
           <!--此文件用来存放一些不方便取值的变量-->
 <!--思路大概是将值藏到重加载的区域内-->
 
 <pjax>
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="初识Java内存模型以及JVM";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -3284,8 +3211,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1642516398327')
-      volantis.js('/js/message.js?time=1642516398327', () => {
+      volantis.css('/css/message.css?time=1642516398317')
+      volantis.js('/js/message.js?time=1642516398317', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3330,8 +3257,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1642516398327')
-      volantis.js('/js/message.js?time=1642516398327', () => {
+      volantis.css('/css/message.css?time=1642516398317')
+      volantis.js('/js/message.js?time=1642516398317', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3390,8 +3317,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     }
     
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1642516398327')
-      volantis.js('/js/message.js?time=1642516398327', () => {
+      volantis.css('/css/message.css?time=1642516398317')
+      volantis.js('/js/message.js?time=1642516398317', () => {
         hideMessage(done);
       });
     } else {
@@ -3611,7 +3538,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
     
-    volantis.js('/js/rightMenu.js?time=1642516398327')
+    volantis.js('/js/rightMenu.js?time=1642516398317')
   </script>
 
 
@@ -3724,19 +3651,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1642516398327")
+        volantis.js("/js/plugins/sites.js?time=1642516398317")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1642516398327")
+        volantis.js("/js/plugins/friends.js?time=1642516398317")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1642516398327")
+        volantis.js("/js/plugins/contributors.js?time=1642516398317")
       }
     
   };
@@ -3835,7 +3762,7 @@ volantis.pjax.push(bindToggleButton);
     await volantis.js("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js")
   
     // 右键 music 需要在 APlayer  MetingJS 之后加载
-    await volantis.js('/js/aplayer.js?time=1642516398328')
+    await volantis.js('/js/aplayer.js?time=1642516398318')
     volantis.APlayerController.music = true;
   
   })();
@@ -3963,7 +3890,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1642516398327.js"></script>
+<script src="/js/app.js?time=1642516398317.js"></script>
 
 
 <!-- optional -->
@@ -4297,7 +4224,7 @@ volantis.pjax.push(bindToggleButton);
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/parallax.js?time=1642516398327').then(()=>{
+    volantis.js('/js/parallax.js?time=1642516398317').then(()=>{
       parallax()
     })
     volantis.pjax.send(()=>{
@@ -4496,7 +4423,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"会飞的小恐龙","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"dinosaur","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"会飞的小恐龙"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/archives/","name":"Archive"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"会飞的小恐龙","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"dinosaur","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"会飞的小恐龙","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"会飞的小恐龙","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"dinosaur","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"会飞的小恐龙"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/Java/","name":"Java"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2022/01/14/初识Java内存模型以及JVM/","name":"初识Java内存模型以及JVM"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"初识Java内存模型以及JVM","description":"初识Java内存模型；简单了解JVM\n（仅供个人使用）","datePublished":"2022-01-14T02:39:27.000Z","dateModified":"2022-01-14T10:08:56.907Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2022/01/14/%E5%88%9D%E8%AF%86Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8AJVM/"},"author":{"@type":"Person","name":"dinosaur","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"会飞的小恐龙","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2022/01/14/%E5%88%9D%E8%AF%86Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8AJVM/","wordCount":27,"articleSection":"Java","keywords":"Java","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 <!-- more -->
